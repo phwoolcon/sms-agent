@@ -18,7 +18,7 @@
     ],
     "require": {
         "php": "~7.1",
-        "phwoolcon": "~1.1"
+        "phwoolcon/phwoolcon": "~1.1"
     },
     "require-dev": {
         "phpunit/phpunit": ">=5.4.3",
