@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phwoolcon/sms-agent": "~1.0"
+    },
+    "phwoolcon-packages": [
+        {
+            "name": "phwoolcon/sms-agent",
+            "url": "git@github.com:phwoolcon/sms-agent.git"
+        }
+    ]
+}
