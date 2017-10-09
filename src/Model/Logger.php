@@ -8,7 +8,7 @@ use Phwoolcon\SmsAgent\AdapterInterface;
 
 class Logger extends Model
 {
-    use \SmsLogTrait;
+    use \SmsLogModelTrait;
 
     protected $_table = 'sms_log';
     protected $_jsonFields = ['extra_data'];
