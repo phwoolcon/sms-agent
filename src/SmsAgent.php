@@ -15,7 +15,7 @@ class SmsAgent
     protected static $di;
 
     /**
-     * @var AdapterInterface
+     * @var AdapterInterface|AdapterTrait
      */
     protected static $sms;
 
