@@ -40,11 +40,13 @@ return [
                     'type'    => Column::TYPE_VARCHAR,
                     'size'    => 50,
                     'notNull' => true,
+                    'default' => '',
                 ]),
                 new Column('status_message', [
                     'type'    => Column::TYPE_VARCHAR,
                     'size'    => 50,
                     'notNull' => true,
+                    'default' => '',
                 ]),
                 new Column('extra_data', [
                     'type'    => Column::TYPE_TEXT,
