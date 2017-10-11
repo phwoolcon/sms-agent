@@ -47,6 +47,9 @@ class Logger extends Model
         if ($adapter = $this->adapterInstance) {
             $this->setStatusCode($adapter->getStatusCode());
             $this->setStatusMessage($adapter->getStatusMessage());
+            $extraData = $this->getExtraData() ?: [];
+            $extraData['response'] = $adapter->getRawResponse();
+            $this->setExtraData($extraData);
         }
         $e and $this->setException(get_class($e) . "\n" . $e->__toString());
         $this->save();
