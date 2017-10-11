@@ -44,6 +44,12 @@ class SmsAgent
         });
     }
 
+    public static function getInstance()
+    {
+        static::$sms or static::$sms = static::$di->getShared(static::$componentName);
+        return static::$sms;
+    }
+
     public static function send(string $mobile, string $content, array $extra = []): bool
     {
         static::$sms or static::$sms = static::$di->getShared(static::$componentName);
