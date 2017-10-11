@@ -22,19 +22,20 @@ class SmsCn implements AdapterInterface
     {
         $this->response = $this->statusCode = null;
         $this->statusMessage = '';
-        $response = $this->api('sms', [
+        $response = $this->api('sms/', [
             'ac'      => 'send',
+            'encode'  => 'utf8',
             'uid'     => $this->config['username'] ?? '',
             'pwd'     => $this->config['password_hash'] ?? '',
             'mobile'  => $mobile,
             'content' => $content,
         ]);
+        $this->response = $response;
         $returnData = json_decode($response, true);
         if (json_last_error() != JSON_ERROR_NONE) {
             throw new Exception('Bad response from sms.cn: ' . json_last_error_msg() . ', response content: "' .
                 $response . '"', json_last_error());
         }
-        $this->response = $returnData;
         $this->statusCode = $returnData['stat'] ?? null;
         $this->statusMessage = $this->filterReturnMessage($returnData);
         return $this->statusCode == 100;
