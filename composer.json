@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "~7.1",
+        "php": ">=7.0",
         "phwoolcon/phwoolcon": "~1.1"
     },
     "require-dev": {
