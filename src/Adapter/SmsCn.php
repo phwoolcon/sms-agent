@@ -3,6 +3,7 @@
 namespace Phwoolcon\SmsAgent\Adapter;
 
 use Phwoolcon\Http\Client;
+use Phwoolcon\Log;
 use Phwoolcon\SmsAgent\AdapterInterface;
 use Phwoolcon\SmsAgent\AdapterTrait;
 use Phwoolcon\SmsAgent\Exception;
@@ -65,6 +66,14 @@ class SmsCn implements AdapterInterface
          */
         $message = $returnData['message'] ?? '';
         $transparentCodes = [100, 103, 107, 108, 112,];
-        return in_array($returnData['stat'] ?? null, $transparentCodes) ? $message : __('Internal Server Error');
+        if (in_array($returnData['stat'] ?? null, $transparentCodes)) {
+            return $message;
+        } else {
+            Log::error(
+                'sms.cn error response: ' . var_export($returnData, true) .
+                '; request: ' . var_export(Client::getInstance()->getLastRequest(), true)
+            );
+            return __('Internal Server Error');
+        }
     }
 }
